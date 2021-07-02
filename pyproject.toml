@@ -6,6 +6,10 @@ authors = ["kristhyanmatos <kristhyandematosmaia@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+black = "^21.6b0"
+networkx = "^2.5.1"
+scikit-fuzzy = "^0.4.2"
+matplotlib = "^3.4.2"
 
 [tool.poetry.dev-dependencies]
 
