@@ -1,6 +1,7 @@
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
+from matplotlib import pyplot as pl
 
 # Cria as variáveis do problema
 comida = ctrl.Antecedent(np.arange(0, 11, 1), "comida")
@@ -41,6 +42,7 @@ gorjeta_simulador.compute()
 print(gorjeta_simulador.output["gorjeta"])
 
 comida.view(sim=gorjeta_simulador)
-comida.view()
 servico.view(sim=gorjeta_simulador)
 gorjeta.view(sim=gorjeta_simulador)
+
+pl.show()
