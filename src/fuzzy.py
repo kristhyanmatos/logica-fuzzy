@@ -11,18 +11,18 @@ aptidao = ctrl.Consequent(np.arange(0, 11, 1), "aptidao")
 
 
 # Cria as funções de pertinência
-tempo_carreira["junior"] = fuzz.gaussmf(tempo_carreira.universe, 2, 1.5)
-tempo_carreira["pleno"] = fuzz.gaussmf(tempo_carreira.universe, 7, 1.5)
-tempo_carreira["senior"] = fuzz.gaussmf(tempo_carreira.universe, 20, 5)
+tempo_carreira["Júnior"] = fuzz.gaussmf(tempo_carreira.universe, 2, 1.5)
+tempo_carreira["Pleno"] = fuzz.gaussmf(tempo_carreira.universe, 7, 1.5)
+tempo_carreira["Sênior"] = fuzz.gaussmf(tempo_carreira.universe, 20, 5)
 
-projetos_realizados["junior"] = fuzz.trimf(projetos_realizados.universe, [0, 0, 2])
-projetos_realizados["pleno"] = fuzz.trapmf(projetos_realizados.universe, [2, 4, 9, 10])
-projetos_realizados["senior"] = fuzz.trimf(projetos_realizados.universe, [6, 15, 90])
+projetos_realizados["Júnior"] = fuzz.trimf(projetos_realizados.universe, [0, 0, 2])
+projetos_realizados["Pleno"] = fuzz.trapmf(projetos_realizados.universe, [2, 4, 9, 10])
+projetos_realizados["Sênior"] = fuzz.trimf(projetos_realizados.universe, [6, 15, 90])
 
 
-complexidade["baixa"] = fuzz.trimf(complexidade.universe, [0, 0, 3])
-complexidade["média"] = fuzz.trapmf(complexidade.universe, [1, 3, 6, 8])
-complexidade["alta"] = fuzz.trimf(complexidade.universe, [6, 9, 16])
+complexidade["Baixa"] = fuzz.trimf(complexidade.universe, [0, 0, 3])
+complexidade["Média"] = fuzz.trapmf(complexidade.universe, [1, 3, 6, 8])
+complexidade["Alta"] = fuzz.trimf(complexidade.universe, [6, 9, 16])
 
 aptidao.automf(names=["Júnior", "Pleno", "Sênior"])
 
