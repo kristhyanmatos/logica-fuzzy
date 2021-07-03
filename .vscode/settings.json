@@ -1,5 +1,6 @@
 {
     "python.linting.mypyEnabled": false,
     "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "C:\\Users\\krist\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\logica-fuzzy-vaSdCwgY-py3.9"
 }

@@ -1,48 +1,37 @@
-import numpy as np
-import skfuzzy as fuzz
-from skfuzzy import control as ctrl
-from matplotlib import pyplot as pl
+from db import DEVS
+from fuzzy import aptidao
 
-# Cria as variáveis do problema
-comida = ctrl.Antecedent(np.arange(0, 11, 1), "comida")
-servico = ctrl.Antecedent(np.arange(0, 11, 1), "servico")
-gorjeta = ctrl.Consequent(np.arange(0, 26, 1), "gorjeta")
+input_complexidade = int(input("insira a complexidade: "))
+input_linguagens = input("insira as linguagens: ")
+input_linguagens = input_linguagens.split(",")
+print("complexidade: " + str(input_complexidade))
+print("linguagens: " + str(input_linguagens))
 
-# Cria automaticamente o mapeamento entre valores nítidos e difusos
-# usando uma função de pertinência padrão (triângulo)
-comida.automf(names=["péssima", "comível", "deliciosa"])
+aptidao_linguagens = []
+# Criar base de aptidao de linguagens
+for linguagem in input_linguagens:
+    aptidao_linguagens.append(
+        {
+            "nome": linguagem,
+            "devs_aptidao": [],
+        }
+    )
 
-
-# Cria as funções de pertinência usando tipos variados
-servico["ruim"] = fuzz.trimf(servico.universe, [0, 0, 5])
-servico["aceitável"] = fuzz.gaussmf(servico.universe, 5, 2)
-servico["excelente"] = fuzz.gaussmf(servico.universe, 10, 3)
-
-gorjeta["baixa"] = fuzz.trimf(gorjeta.universe, [0, 0, 13])
-gorjeta["média"] = fuzz.trapmf(gorjeta.universe, [0, 13, 15, 25])
-gorjeta["alta"] = fuzz.trimf(gorjeta.universe, [15, 25, 25])
-
-comida.view()
-servico.view()
-gorjeta.view()
-
-rule1 = ctrl.Rule(servico["excelente"] | comida["deliciosa"], gorjeta["alta"])
-rule2 = ctrl.Rule(servico["aceitável"], gorjeta["média"])
-rule3 = ctrl.Rule(servico["ruim"] & comida["péssima"], gorjeta["baixa"])
-
-gorjeta_ctrl = ctrl.ControlSystem([rule1, rule2, rule3])
-gorjeta_simulador = ctrl.ControlSystemSimulation(gorjeta_ctrl)
-
-# Entrando com alguns valores para qualidade da comida e do serviço
-gorjeta_simulador.input["comida"] = 3.5
-gorjeta_simulador.input["servico"] = 9.4
-
-# Computando o resultado
-gorjeta_simulador.compute()
-print(gorjeta_simulador.output["gorjeta"])
-
-comida.view(sim=gorjeta_simulador)
-servico.view(sim=gorjeta_simulador)
-gorjeta.view(sim=gorjeta_simulador)
-
-pl.show()
+for dev in DEVS:
+    # buscar a linguagem
+    for linguagen in dev["linguagens"]:
+        if linguagen["nome"] in (input_linguagens):
+            ##
+            for index, aptidao_linguagem in enumerate(aptidao_linguagens):
+                if aptidao_linguagem["nome"] == linguagen["nome"]:
+                    aptidao_linguagens[index]["devs_aptidao"].append(
+                        {
+                            "nome": dev["nome"],
+                            "aptidao": aptidao(
+                                dev["tempo_carreira"],
+                                input_complexidade,
+                                linguagen["projetos_realizados"],
+                            ),
+                        }
+                    )
+print(aptidao_linguagens)
