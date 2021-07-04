@@ -1,6 +1,6 @@
 DEVS = [
     {
-        "nome": "ana",
+        "nome": "tallyah",
         "linguagens": [
             {
                 "nome": "python",
@@ -14,7 +14,7 @@ DEVS = [
         "tempo_carreira": 2,
     },
     {
-        "nome": "carla",
+        "nome": "camile",
         "linguagens": [
             {
                 "nome": "python",
@@ -28,7 +28,7 @@ DEVS = [
         "tempo_carreira": 8,
     },
     {
-        "nome": "beatriz",
+        "nome": "lissandra",
         "linguagens": [
             {
                 "nome": "node",
@@ -42,7 +42,7 @@ DEVS = [
         "tempo_carreira": 3,
     },
     {
-        "nome": "juliana",
+        "nome": "diana",
         "linguagens": [
             {
                 "nome": "vue",
@@ -56,17 +56,21 @@ DEVS = [
         "tempo_carreira": 0,
     },
     {
-        "nome": "tatiane",
+        "nome": "samira",
         "linguagens": [
             {
                 "nome": "java",
                 "projetos_realizados": 10,
             },
+            {
+                "nome": "vue",
+                "projetos_realizados": 0,
+            },
         ],
         "tempo_carreira": 15,
     },
     {
-        "nome": "valesca",
+        "nome": "katarina",
         "linguagens": [
             {
                 "nome": "pascal",

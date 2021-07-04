@@ -1,5 +1,5 @@
 from db import DEVS
-from fuzzy import aptidao
+from fuzzy import calula_aptidao
 
 input_complexidade = int(input("insira a complexidade: "))
 input_linguagens = input("insira as linguagens: ")
@@ -27,7 +27,7 @@ for dev in DEVS:
                     aptidao_linguagens[index]["devs_aptidao"].append(
                         {
                             "nome": dev["nome"],
-                            "aptidao": aptidao(
+                            "aptidao": calula_aptidao(
                                 dev["tempo_carreira"],
                                 input_complexidade,
                                 linguagen["projetos_realizados"],
