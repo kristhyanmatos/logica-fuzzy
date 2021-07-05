@@ -1,14 +1,12 @@
 from db import DEVS
+from utils import busca_chave
 from fuzzy import calula_aptidao
 
 input_complexidade = int(input("insira a complexidade: "))
 input_linguagens = input("insira as linguagens: ")
 input_linguagens = input_linguagens.split(",")
-print("complexidade: " + str(input_complexidade))
-print("linguagens: " + str(input_linguagens))
 
 aptidao_linguagens = []
-# Criar base de aptidao de linguagens
 for linguagem in input_linguagens:
     aptidao_linguagens.append(
         {
@@ -18,10 +16,8 @@ for linguagem in input_linguagens:
     )
 
 for dev in DEVS:
-    # buscar a linguagem
     for linguagen in dev["linguagens"]:
         if linguagen["nome"] in (input_linguagens):
-            ##
             for index, aptidao_linguagem in enumerate(aptidao_linguagens):
                 if aptidao_linguagem["nome"] == linguagen["nome"]:
                     aptidao_linguagens[index]["devs_aptidao"].append(
@@ -34,4 +30,8 @@ for dev in DEVS:
                             ),
                         }
                     )
+
+for linguagem in aptidao_linguagens:
+    linguagem["devs_aptidao"].sort(key=busca_chave)
+
 print(aptidao_linguagens)

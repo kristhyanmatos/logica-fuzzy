@@ -26,6 +26,12 @@ complexidade["Sênior"] = fuzz.trimf(complexidade.universe, [6, 9, 16])
 
 aptidao.automf(names=["Júnior", "Pleno", "Sênior"])
 
+# tempo_carreira.view()
+# projetos_realizados.view()
+# complexidade.view()
+# aptidao.view()
+# pl.show()
+
 # Regras
 regra1 = ctrl.Rule(
     tempo_carreira["Júnior"] & projetos_realizados["Júnior"] & complexidade["Júnior"],
@@ -205,7 +211,7 @@ def calula_aptidao(
     complexidade_input,
     projetos_realizados_input,
 ):
-    # Entrando com alguns valores para qualidade da comida e do serviço
+    # Inserindo valores
     aptidao_simulatior.input["tempo_carreira"] = tempo_carreira_input
     aptidao_simulatior.input["complexidade"] = complexidade_input
     aptidao_simulatior.input["projetos_realizados"] = projetos_realizados_input
@@ -213,8 +219,6 @@ def calula_aptidao(
     # Computando o resultado
     aptidao_simulatior.compute()
     print(aptidao_simulatior.output["aptidao"])
-    aptidao.view(sim=aptidao_simulatior)
-    pl.show()
+    # aptidao.view(sim=aptidao_simulatior)
+    # pl.show()
     return aptidao_simulatior.output["aptidao"]
-    ## comida.view(sim=aptidao)
-    ## servico.view(sim=aptidao)
